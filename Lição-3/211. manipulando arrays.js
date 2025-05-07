@@ -1,3 +1,5 @@
+// manipurando Arrys
+
 const casa = [
     'cadeira',
     'sofa',
