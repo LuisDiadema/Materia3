@@ -3,6 +3,8 @@ Curso de engenharia de software da Escola DNC - *Cursando*
 
 ## Neste modulo foi Ensinado:
 
-1. Manipulação de arrays (Push, Pop, Shift, Unshift)
+1. Arrays em JavaScript
 
-2. Interações para manupular Arrys (MAP)
+2. Manipulação de arrays (Push, Pop, Shift, Unshift)
+
+3. Interações para manupular Arrys (MAP)
