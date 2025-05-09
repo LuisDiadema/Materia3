@@ -20,6 +20,6 @@ const intemRemovido = casa.shift()
 
 console.log(intemRemovido)
 
-casa.forEach((intem) => {
-    console.log(intem)
+casa.forEach((item) => {
+    console.log(item)
 })
