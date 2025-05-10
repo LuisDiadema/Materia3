@@ -1,25 +1,27 @@
-// manipurando Arrys
+// Método MAP aplicado abaixo.
+// Ele é ultilizado para modificar casa item que está dentro do Array.
 
 const casa = [
-    'cadeira',
-    'sofa',
-    'porta',
+    'armario',
     'mesa',
-    'caque',
-    'quadros',
-    'aparador'
+    'cadeira',
 ];
 
-casa.push('cama')
-
-casa.unshift('guarda-roupa')
-casa.shift()
-
-
-const intemRemovido = casa.shift()
-
-console.log(intemRemovido)
-
-casa.forEach((item) => {
-    console.log(item)
+const minhaCasa = casa.map((item) => {
+    return {number: item}
 })
+
+console.log(casa)
+console.log(minhaCasa) 
+
+casa.push('avião')
+
+// Casa queira fazer uma modificação em algum item espeficido também é possível com o método MAP.
+console.log(casa)
+
+const novaCasa = casa.map((itemCasa) => ({
+    name: itemCasa,
+    nãoPertence: itemCasa === 'avião'
+}))
+
+console.log(novaCasa)
