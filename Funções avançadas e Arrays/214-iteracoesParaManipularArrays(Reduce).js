@@ -23,7 +23,7 @@ const casa1 = [
 ];
 
 const descricaoCasa = casa1.reduce((perv, next) => {
-    if (!perv.length) return next.name
+    if (!perv.length) return next.name 
     return `${perv}, ${next.name}`
 }, '')
 
