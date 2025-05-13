@@ -17,7 +17,7 @@ const tarefasPendentes = tarefas.filter((item) => {
 })
 console.log(tarefasPendentes)
 
-// Alterando o status de uma tarefa com o método (MAP)
+// Alterando o status de todas as tarefas com o método (MAP)
 const concluidoTarefas = tarefas.map((tarefas) =>  ({...tarefas, status: 'Concluido'}))
 
 console.log(concluidoTarefas)
@@ -40,7 +40,7 @@ console.log(locationTarefas)
 
 // Contando quantas tarefas pendentes ainda faltam com o método (Reduce)
 const countTarefaPendente = tarefas.reduce((prev, next) => {
-    if (next.status === 'pendente') return prev + 1; 
+    if (next.status === 'Pendente') return prev + 1; 
     return prev;
 }, 0)
 
