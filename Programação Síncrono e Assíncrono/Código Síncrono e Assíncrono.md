@@ -24,5 +24,5 @@ iniciar uma outra tarefa depois que a anterior tenha sido conluida.
 ### Características do Código Síncrono
 
 Execução sequencial: O código é executado linha por linha, na ordem exata em que foi escrito.
-Bloqueio: Cada instrução deve ser concluída antes de passar para a próxima.
+Bloqueio: Cada instrução deve ser concluída antes de passar para a próxima. 
 Provisibilidade: O fluxo de execução é fácil de seguir e prever.
