@@ -12,7 +12,9 @@ não precisemos esperar o fim de uma tarefa para começar outra.
 ### Características do Código Assíncrono
 
 Execução Paralela: Multiplas tarefas podem ser iniciadas e executadas simultaneamente.
+
 Não Bloqueante: O programa não precisa esperar que uma tarefa termine para iniciar outra.
+
 Callbacks e Promises: Mecanismo para lidar com o resultado de operações assícronas.
 
 ## Programação Síncrona:
@@ -24,5 +26,7 @@ iniciar uma outra tarefa depois que a anterior tenha sido conluida.
 ### Características do Código Síncrono
 
 Execução sequencial: O código é executado linha por linha, na ordem exata em que foi escrito.
+
 Bloqueio: Cada instrução deve ser concluída antes de passar para a próxima. 
+
 Provisibilidade: O fluxo de execução é fácil de seguir e prever.
