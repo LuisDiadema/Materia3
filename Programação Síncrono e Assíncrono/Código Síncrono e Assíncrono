@@ -14,3 +14,4 @@ não precisemos esperar o fim de uma tarefa para começar outra.
 O código síncrono é mais simples de se entender, muitas vezes e um pouco lento na hora de
 executar por que ele tem que esperar as coisas acontecerem, linha por linha, ele só consegui
 iniciar uma outra tarefa depois que a anterior tenha sido conluida.
+
