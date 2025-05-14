@@ -9,6 +9,7 @@ Código assícrono te permite fazer mais de uma coisa ao mesmo tempo, isto é ú
 tarefas muito demoradas como esperar a restada de um servidor, o código assícrono permite que 
 não precisemos esperar o fim de uma tarefa para começar outra.
 
+
 ### Características do Código Assíncrono
 
 Execução Paralela: Multiplas tarefas podem ser iniciadas e executadas simultaneamente.
@@ -16,6 +17,8 @@ Execução Paralela: Multiplas tarefas podem ser iniciadas e executadas simultan
 Não Bloqueante: O programa não precisa esperar que uma tarefa termine para iniciar outra.
 
 Callbacks e Promises: Mecanismo para lidar com o resultado de operações assícronas.
+
+
 
 ## Programação Síncrona:
 
