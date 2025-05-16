@@ -1,3 +1,5 @@
+// Simulando uma busca de dados em um Data Base
+
 console.log('-- Bem-vindo ao DB --')
 
 let dataBaseSearch = new Promise ((resolve, reject) => {
