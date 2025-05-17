@@ -12,16 +12,18 @@ let novoPedido = new Promise (( resolve, reject ) => {
             console.log('Pedido confirmado com sucesso!')
             resolve({ confirmation: true, payment: 'WATING' })
         } else {
-            reject('Falha ao confirmar o pedido')
+            console.log('Falha ao confirmar o pedido')
+            reject({confirmation: false, payment: 'WAITING'})
         }
 
     }, 3000)
 })
 
-let pagamento = (pedido) => new Promise (( resolve , reject ) => {
-    console.log('Aguardando aprovação de pagamento do cartão')
+let pagamento =  new Promise (( resolve , reject ) => {
 
-    setTimeout(() =>{
+    setTimeout(() => {
+        console.log('Aguardando aprovação de pagamento do cartão')
+
         let pagamentoConfirmado = true;
 
         if (pagamentoConfirmado) {
@@ -29,7 +31,8 @@ let pagamento = (pedido) => new Promise (( resolve , reject ) => {
             resolve({ confirmation: true, payment: 'APPROVED'})
         }
             else {
-                 reject ('Falha ao confirmar o pagamento')
+                console.log('Falha ao confirmar o pagamento')
+                 reject ({ confirmation: false, payment: 'REFUSED'})
             }
     }, 3000)
 })
@@ -39,7 +42,17 @@ const pedidoFinalizado = novoPedido
         console.log(pedido)
         return pagamento(pedido)
     })
+    .catch((error) => {
+        console.log(error)
+        return 'Falhar ao processar o pedido'
+    })
+
+pagamento
     .then((pagamento) => {
         console.log(pagamento)
         console.log('Pagamento realizado com sucesso, Estamos separando seus produtos')
+    })
+    .catch((error) => {
+        console.log(error)
+        console.log('Gostaria de tentar novamente ?')
     })
