@@ -10,6 +10,19 @@
 <body>
     <main>
         <h1>Lista de tarefas</h1>
+        <section id="createToDoSection">
+            <form id="createToDoForm">
+                <input 
+                type="text"
+                id="description"
+                name="description"
+                class="inputDescription"
+                aria-label="Qual tarefa deseja adicionar"
+                placeholder="Qual tarefa deseja adicionar ?"
+                />
+                <button type="submit" aria-label="Cadastrar tarefa" class="addTaskBtn">+</button>
+            </form>
+        </section>
         <section class="toDoSection">
             <ul id="toDoList"></ul>
         </section>
