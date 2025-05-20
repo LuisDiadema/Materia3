@@ -8,7 +8,7 @@ const removeTask = (taskId) => {
     tasks = tasks.filter(({ id }) => parseInt(id) !== parseInt(taskId));
 
     document
-        .getElementById("ToDoList")
+        .getElementById("toDoList")
         .removeChild(document.getElementById(taskId));
 }
 
