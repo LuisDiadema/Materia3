@@ -4,7 +4,7 @@ const getTasksFromLocalStorage = () => {
 }
 
 const setTasksInLocalStore = (tasks) => {
-    window.localStorage.setItem('tasks', JSON.stringify(tasks))
+    window.localStorage.setItem('tasks', JSON.stringify(tasks));
 }
 
 const removeTask = (taskId) => {
@@ -58,9 +58,8 @@ const onCheckboxClick = (event) => {
 
     const updatedTasks = tasks.map((task) => {
         return parseInt(task.id) === parseInt(id) 
-            ? { ...task, checked: event.target.checked}
+            ? { ...task, checked: event.target.checked }
             : task;
-
     })
     setTasksInLocalStore(updatedTasks)
 }
@@ -113,13 +112,15 @@ const createTask = (event) => {
         { id: newTaskData.id, description: newTaskData.description, checked: false }
     ]
     setTasksInLocalStore(updatedTasks)
+
+    document.getElementById('description').value = ''
 }
 
 window.onload = function () {
     const form = document.getElementById('createToDoForm');
     form.addEventListener('submit', createTask)
 
-    const tasks = getTasksFromLocalStorage();
+    const tasks = getTasksFromLocalStorage()
 
     tasks.forEach((task) => {
         const checkbox = getCheckboxInput(task);
