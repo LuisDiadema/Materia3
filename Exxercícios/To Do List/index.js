@@ -78,7 +78,7 @@ const getCheckboxInput = ({id, description, checked})  => {
     label.textContent = description;
     label.htmlFor = checkboxId;
 
-    wrapper.classname = 'checkbox-label-container';
+    wrapper.className = 'checkbox-label-container';
 
     wrapper.appendChild (checkbox);
     wrapper.appendChild (label);
