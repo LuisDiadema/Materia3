@@ -59,7 +59,7 @@ const createTaskListItem = (task, checkbox) => {
 
     const removeTaskButton = document.createElement('button');
     removeTaskButton.textContent = 'x';
-    removeTaskButton.ariaLabel = 'Remover tarefa';
+    removeTaskButton.ariaLabel = 'Remover tarefa concluída';
 
     removeTaskButton.onclick = () => removeTask(task.id);
     
