@@ -83,6 +83,6 @@ window.onload = function () {
 
     tasks.forEach((task) => {
         const checkbox = getCheckboxInput(task);
-        createTaskListItem(task, checkbox)
+        createListItem(task, checkbox)
     })
 }

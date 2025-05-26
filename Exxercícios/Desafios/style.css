@@ -91,7 +91,11 @@ main {
         font-size: .5rem;
         border: none;
         border-radius: .2rem;
-
+        cursor: pointer;
+        
+        &:hover {
+            background: #4e86ff;
+        }
     }
 }
 
