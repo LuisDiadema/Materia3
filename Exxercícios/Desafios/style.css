@@ -63,7 +63,6 @@ main {
 #list {
     width: 100%;
     padding-left: 0;
-    appearance: none;
     list-style-type: none;
 }
 
@@ -81,6 +80,12 @@ main {
     font-weight: 500;
     font-size: .8rem;
     }
+    
+    .checkbox > ul > li {
+        appearance: none;
+        outline: none;
+    }
+
     ul > li > button {
         background-color: #2D70FD;
         color: #FFFFFF;
@@ -96,6 +101,22 @@ main {
         &:hover {
             background: #4e86ff;
         }
+    }
+    input{
+        margin: 0;
+        appearance: none;
+        cursor: pointer;
+        padding: 10px 20px;
+        background-color: #2D70FD;
+        border-radius: .2rem;
+        color: #FFFFFF;
+        font-family: Inter;
+        font-weight: 500;
+        font-size: .7rem;
+        justify-content: space-between;
+        }
+        input:before{
+        content: 'Concluir';
     }
 }
 

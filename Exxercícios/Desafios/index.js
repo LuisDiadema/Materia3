@@ -16,16 +16,16 @@ const createListItem = (task, checkbox) => {
     const list = document.getElementById('list');
     const toDo = document.createElement('li');
 
-    const completedTaskButton = document.createElement('button');
-    completedTaskButton.textContent = 'Concluir';
-    completedTaskButton.ariaLabel = 'Concluir tarefa';
-
-    completedTaskButton.onclick = () => completedTask(task.id);
+    //const completedTaskButton = document.createElement('button');
+    //completedTaskButton.textContent = 'Concluir';
+    //completedTaskButton.ariaLabel = 'Concluir tarefa';
+//
+    //completedTaskButton.onclick = () => completedTask(task.id);
 
 
     toDo.id = task.id;
     toDo.appendChild(checkbox);
-    toDo.appendChild(completedTaskButton);
+    //toDo.appendChild(completedTaskButton);
     list.appendChild(toDo);
 
     return toDo;
