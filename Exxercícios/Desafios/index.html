@@ -16,32 +16,27 @@
 <body>
     <main>
         <h1>Board de tarefas</h1>
-        <section id="cadastro">
-            <form class="taskDescription">
+        <section class="cadastro">
+            <form id="taskDescription">
                 <input 
                 type="text"
                 id="description"
                 name="description"
                 class="inputDescription"
                 aria-label="Nome da tarefa"
-                placeholder="Nome da tarefa"
-                />
-            </form>
-            <form class="taskDescription">
+                placeholder="Nome da tarefa" />
                 <input 
                 type="text"
                 id="etiqueta"
                 name="etiqueta"
                 class="inputDescription"
                 arial-label="Classifique sua tarefa"
-                placeholder="Etiqueta"
-                />
+                placeholder="Etiqueta" />
+                <button type="submit" id="save-task" aria-label="Cadastrar tarefa" class="addTaskBtn">+</button>
             </form>
-            <button type="submit" id="save-task" aria-label="Cadastrar tarefa" class="addTaskBtn">+</button>
         </section>
         <section class="toDo">
-            <ul id="list">
-            </ul>
+            <ul id="list"></ul>
         </section>
     </main>    
 </body>

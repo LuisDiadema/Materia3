@@ -4,6 +4,33 @@ const tasks = [
     {id: 3, description: 'ir a academia', checked: false},
 ];
 
+const completedTask = (taskId) => {
+    tasks = tasks.filter(({ id, }) => parseInt(id) !== parseInt(taskId));
+
+    document.
+        getElementById("list")
+        .completedChild(document.getElementById(taskId));
+}
+
+const createListItem = (task, checkbox) => {
+    const list = document.getElementById('list');
+    const toDo = document.createElement('li');
+
+    const completedTaskButton = document.createElement('button');
+    completedTaskButton.textContent = 'Concluir';
+    completedTaskButton.ariaLabel = 'Concluir tarefa';
+
+    completedTaskButton.onclick = () => completedTask(task.id);
+
+
+    toDo.id = task.id;
+    toDo.appendChild(checkbox);
+    toDo.appendChild(completedTaskButton);
+    list.appendChild(toDo);
+
+    return toDo;
+}
+
 const getCheckboxInput = ({id, description, checked}) => {
     const checkbox = document.createElement('input');
     const label = document.createElement('label');
@@ -17,7 +44,7 @@ const getCheckboxInput = ({id, description, checked}) => {
     label.textContent = description;
     label.htmlFor = checkboxId;
 
-    wrapper.className = '';
+    wrapper.className = 'checkbox-label-container';
 
     wrapper.appendChild(checkbox);
     wrapper.appendChild(label);
@@ -25,28 +52,37 @@ const getCheckboxInput = ({id, description, checked}) => {
     return wrapper;
 }
 
-const createListItem = (task, checkbox) => {
+const getNewTaskId = () => {
+    const lastId = tasks[tasks.length - 1]?.id;
+    return lastId ? lastId + 1 : 1;
+}
 
-    const list = document.getElementById('list');
-    const toDo = document.createElement('li');
+const getNewTaskData = (event) => {
+    const description = event.target.elements.description.value;
+    const id = getNewTaskId();
 
-    toDo.id = task.id;
-    list.appendChild(toDo);
+    return { description, id }
+}
+
+const createTask = (event) => {
+    event.preventDefault();
+    const newTaskData = getNewTaskData(event);
+
+    const checkbox = getCheckboxInput(newTaskData)
+    createListItem(newTaskData, checkbox);
+
+    tasks = [
+        ...tasks, 
+        { id: newTaskData.id, description: newTaskData.description, checkbox: false }
+    ]
 }
 
 window.onload = function () {
+    const form = document.getElementById('taskDescription');
+    form.addEventListener('submit', createTask);
 
     tasks.forEach((task) => {
         const checkbox = getCheckboxInput(task);
-
-        const list = document.getElementById('list');
-        const toDo = document.createElement('li');
-
-        toDo.id = task.id;
-        toDo.appendChild(checkbox);
-
-        list.appendChild(toDo);
-
+        createTaskListItem(task, checkbox)
     })
-
 }
