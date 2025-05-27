@@ -5,11 +5,17 @@ const tasks = [
 ];
 
 const completedTask = (taskId) => {
-    tasks = tasks.filter(({ id, }) => parseInt(id) !== parseInt(taskId));
+    tasks = tasks.filter(({ id }) => parseInt(id) !== parseInt(taskId));
 
-    document.
-        getElementById("list")
+    document
+        .getElementById("list")
         .completedChild(document.getElementById(taskId));
+}
+
+const tasksToCompleted = () => {
+    const tasksToCompleted = tasks
+        .filter(({ checked }) => checked)
+    console.log(tasksToCompleted)
 }
 
 const createListItem = (task, checkbox) => {
@@ -31,6 +37,12 @@ const createListItem = (task, checkbox) => {
     return toDo;
 }
 
+const onCheckboxClick = (event) => {
+    const [firstElement, secondElement] = event.target.id.split('-')
+    console.log(firstElement, secondElement)
+
+}
+
 const getCheckboxInput = ({id, description, checked}) => {
     const checkbox = document.createElement('input');
     const label = document.createElement('label');
@@ -40,6 +52,7 @@ const getCheckboxInput = ({id, description, checked}) => {
     checkbox.type = 'checkbox';
     checkbox.id = checkboxId;
     checkbox.checked = checked || false;
+    checkbox.addEventListener('change', onCheckboxClick)
     
     label.textContent = description;
     label.htmlFor = checkboxId;

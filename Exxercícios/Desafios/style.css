@@ -40,7 +40,7 @@ main {
 }
 
 .addTaskBtn {
-    font-size: 1rem;
+    font-size: .8rem;
     color: #ffffff;
     background-color: #2D70FD;
     width: 2.1rem;
@@ -88,11 +88,11 @@ main {
     ul > form > button {
         background-color: #2D70FD;
         color: #FFFFFF;
-        width: 3.7rem;
-        height: 1.3rem;
+        width: 4rem;
+        height: 1.8rem;
         font-family: Inter;
         font-weight: 500;
-        font-size: .5rem;
+        font-size: .6rem;
         border: none;
         border-radius: .2rem;
         cursor: pointer;
