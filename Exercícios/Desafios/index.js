@@ -1,3 +1,4 @@
+
 const tasks = [
     {id: 1, description: 'Passear com o cachorro', checked: false},
     {id: 2, description: 'Fazer almoço', checked: true},
