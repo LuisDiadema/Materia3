@@ -22,16 +22,19 @@ const tasksToCompleted = () => {
 const createListItem = (task, checkbox) => {
     const list = document.getElementById('list');
     const toDo = document.createElement('form');
+    const toDoEtiqueta = document.createElement('form');
+
+    toDoEtiqueta.className = 'toDoEtiqueta';
 
     const completedTaskButton = document.createElement('button');
     completedTaskButton.textContent = 'Concluir';
     completedTaskButton.ariaLabel = 'Concluir tarefa';
-//
-    completedTaskButton.onclick = () => completedTask(task.id);
 
+    completedTaskButton.onclick = () => completedTask(task.id);
 
     toDo.id = task.id;
     toDo.appendChild(checkbox);
+    toDo.appendChild(toDoEtiqueta);
     toDo.appendChild(completedTaskButton);
     list.appendChild(toDo);
 
@@ -41,7 +44,6 @@ const createListItem = (task, checkbox) => {
 const onCheckboxClick = (event) => {
     const [firstElement, secondElement] = event.target.id.split('-')
     console.log(firstElement, secondElement)
-
 }
 
 const getCheckboxInput = ({id, description, checked}) => {
@@ -58,7 +60,7 @@ const getCheckboxInput = ({id, description, checked}) => {
     label.textContent = description;
     label.htmlFor = checkboxId;
 
-    wrapper.className = 'checkbox-label-container';
+    wrapper.className = 'checkbox-label-container grid1';
 
     wrapper.appendChild(checkbox);
     wrapper.appendChild(label);
@@ -93,7 +95,7 @@ const createTask = (event) => {
 
 window.onload = function () {
     const form = document.getElementById('taskDescription');
-    form.addEventListener('submit', createTask);
+    form.addEventListener('submit', createTask)
 
     tasks.forEach((task) => {
         const checkbox = getCheckboxInput(task);
