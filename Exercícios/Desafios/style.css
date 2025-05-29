@@ -71,8 +71,8 @@ main {
 
     ul > form {
         margin-bottom: .3rem;
-        display: flex;
-        justify-content: space-between;
+        display: grid;
+        grid-auto-flow: column;
         border: 1px solid rgb(236, 236, 236);
         border-radius: .5rem;
         padding: .8rem 1rem;
@@ -86,6 +86,7 @@ main {
     }
 
     ul > form > button {
+        grid-area: span 2;
         background-color: #2D70FD;
         color: #FFFFFF;
         width: 4rem;
@@ -105,5 +106,3 @@ main {
         display: none;
     }
 }
-
-

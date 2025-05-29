@@ -1,8 +1,7 @@
-
 const tasks = [
-    {id: 1, description: 'Passear com o cachorro', checked: false},
-    {id: 2, description: 'Fazer almoço', checked: true},
-    {id: 3, description: 'ir a academia', checked: false},
+    {id: 1, description: 'Passear com o cachorro', checked: false, etiqueta: 'FrontEnd'},
+    {id: 2, description: 'Fazer almoço', checked: true, etiqueta: 'BackEnd'},
+    {id: 3, description: 'ir a academia', checked: false, etiqueta: 'UX'},
 ];
 
 const completedTask = (taskId) => {
@@ -19,7 +18,7 @@ const tasksToCompleted = () => {
     console.log(tasksToCompleted)
 }
 
-const createListItem = (task, checkbox) => {
+const createListItem = (task, checkbox, etiqueta) => {
     const list = document.getElementById('list');
     const toDo = document.createElement('form');
     const toDoEtiqueta = document.createElement('form');
@@ -34,7 +33,7 @@ const createListItem = (task, checkbox) => {
 
     toDo.id = task.id;
     toDo.appendChild(checkbox);
-    toDo.appendChild(toDoEtiqueta);
+    toDo.appendChild(etiqueta);
     toDo.appendChild(completedTaskButton);
     list.appendChild(toDo);
 
@@ -44,6 +43,25 @@ const createListItem = (task, checkbox) => {
 const onCheckboxClick = (event) => {
     const [firstElement, secondElement] = event.target.id.split('-')
     console.log(firstElement, secondElement)
+}
+
+const getCheckboxInputEtiqueta = ({ id, etiqueta}) => {
+    const label = document.createElement('label');
+    const wrapper = document.createElement('div');
+    const checkboxId = `${id}-etiqueta`;
+
+    etiqueta.type = 'etiqueta';
+    etiqueta.id = checkboxId;
+    etiqueta.etiqueta = etiqueta || false;
+
+    label.textContent = etiqueta;
+    label.htmlFor = checkboxId
+
+    wrapper.className = 'checkbox-label-container';
+
+    wrapper.appendChild(label);
+
+    return wrapper;
 }
 
 const getCheckboxInput = ({id, description, checked}) => {
@@ -57,8 +75,9 @@ const getCheckboxInput = ({id, description, checked}) => {
     checkbox.checked = checked || false;
     checkbox.addEventListener('change', onCheckboxClick)
     
+
     label.textContent = description;
-    label.htmlFor = checkboxId;
+    label.htmlFor = checkboxId
 
     wrapper.className = 'checkbox-label-container grid1';
 
@@ -87,9 +106,18 @@ const createTask = (event) => {
     const checkbox = getCheckboxInput(newTaskData)
     createListItem(newTaskData, checkbox);
 
+    const etiqueta = getCheckboxInputEtiqueta(newTaskData)
+    createListItem(newTaskData, etiqueta)
+
+
     tasks = [
         ...tasks, 
-        { id: newTaskData.id, description: newTaskData.description, checkbox: false }
+        { 
+        id: newTaskData.id, 
+        description: newTaskData.description, 
+        checkbox: false , 
+        etiqueta: newTaskData.etiqueta
+        }
     ]
 }
 
@@ -99,6 +127,7 @@ window.onload = function () {
 
     tasks.forEach((task) => {
         const checkbox = getCheckboxInput(task);
-        createListItem(task, checkbox)
+        const etiqueta = getCheckboxInputEtiqueta(task)
+        createListItem(task, checkbox, etiqueta)
     })
 }
