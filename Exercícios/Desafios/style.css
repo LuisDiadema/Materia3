@@ -106,3 +106,19 @@ main {
         display: none;
     }
 }
+
+.etiqueta-label-container {
+    width: 2rem;
+    height: .5rem;
+    border-radius: .5rem;
+    border: 1px solid #B1BACB;
+    padding: .12rem .25rem;
+    font-weight: 500;
+    font-size: .45rem;
+    color: #B1BACB;
+    text-align: center;
+}
+
+form {
+    justify-content: space-between;
+}
