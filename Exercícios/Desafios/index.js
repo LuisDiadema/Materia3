@@ -87,6 +87,11 @@ const getCheckboxInput = ({id, description, checked}) => {
     return wrapper;
 }
 
+const getNewEtiqueta = () => {
+    const lastEtiqueta = tasks [tasks.length - 1]?.etiqueta;
+    return lastEtiqueta ? lastEtiqueta + 1 : 1;
+}
+
 const getNewTaskId = () => {
     const lastId = tasks[tasks.length - 1]?.id;
     return lastId ? lastId + 1 : 1;
@@ -105,10 +110,6 @@ const createTask = (event) => {
 
     const checkbox = getCheckboxInput(newTaskData)
     createListItem(newTaskData, checkbox);
-
-    const etiqueta = getCheckboxInputEtiqueta(newTaskData)
-    createListItem(newTaskData, etiqueta)
-
 
     tasks = [
         ...tasks, 
