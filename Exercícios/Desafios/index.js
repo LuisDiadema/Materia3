@@ -92,6 +92,9 @@ const getNewEtiqueta = () => {
     return lastEtiqueta ? lastEtiqueta + 1 : 1;
 }
 
+const getNewEtiquetaData = (event) => {
+}
+
 const getNewTaskId = () => {
     const lastId = tasks[tasks.length - 1]?.id;
     return lastId ? lastId + 1 : 1;
