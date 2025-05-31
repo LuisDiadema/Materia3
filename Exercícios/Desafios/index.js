@@ -61,7 +61,7 @@ const getCheckboxInputEtiqueta = ({ etiqueta }) => {
     const checkboxId = `${etiqueta}-etiquetas`;
 
     etiquetas.type = 'etiquetas';
-    etiquetas.id = checkboxId;
+    etiquetas.etiqueta = checkboxId;
     etiquetas.etiqueta = etiqueta || false;
 
     label.textContent = description;
@@ -160,15 +160,14 @@ const getNewTaskData = (event) => {
 
 window.onload = function () {
     const form = document.getElementById('taskDescription');
-    form.addEventListener('submit', createTask)
-    form.addEventListener('submit', createEtiqueta)
+    form.addEventListener('submit', createTask, createEtiqueta)
 
     tasks.forEach((task) => {
         const checkbox = getCheckboxInput(task);
         createListItem(task, checkbox)
     })
-    tasks.forEach ((task) => {
-        const etiqueta = getCheckboxInputEtiqueta(task);
-        createEtiquetaListItem(task, etiqueta)
+    tasks.forEach ((tasks) => {
+        const etiqueta = getCheckboxInputEtiqueta(tasks);
+        createEtiquetaListItem(tasks, etiqueta)
     })
 }
