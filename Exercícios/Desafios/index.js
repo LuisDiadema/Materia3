@@ -54,21 +54,22 @@ const onCheckboxClick = (event) => {
     console.log(firstElement, secondElement)
 }
 
-const getCheckboxInputEtiqueta = ({ id, etiqueta }) => {
+const getCheckboxInputEtiqueta = ({ etiqueta }) => {
     const etiquetas = document.createElement('input')
     const label = document.createElement('label');
     const wrapper = document.createElement('div');
-    const checkboxId = `${id}-etiqueta`;
+    const checkboxId = `${etiqueta}-etiquetas`;
 
-    etiquetas.type = 'etiqueta';
+    etiquetas.type = 'etiquetas';
     etiquetas.id = checkboxId;
     etiquetas.etiqueta = etiqueta || false;
 
-    label.textContent = etiqueta;
+    label.textContent = description;
     label.htmlFor = checkboxId
 
     wrapper.className = 'etiqueta-label-container';
 
+    wrapper.appendChild(etiquetas);
     wrapper.appendChild(label);
 
     return wrapper;
