@@ -69,7 +69,7 @@ main {
 
 .toDo {
 
-    ul > form {
+    ul > li {
         margin-bottom: .3rem;
         display: grid;
         grid-auto-flow: column;
@@ -81,11 +81,11 @@ main {
         font-weight: 500;
     }
 
-    & > ul > form:last-child {
+    & > ul > li:last-child {
         margin-bottom: 0;
     }
 
-    ul > form > button {
+    ul > li > button {
         grid-area: span 2;
         background-color: #2D70FD;
         color: #FFFFFF;
@@ -119,6 +119,6 @@ main {
     text-align: center;
 }
 
-form {
+li {
     justify-content: space-between;
 }
