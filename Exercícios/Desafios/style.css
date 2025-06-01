@@ -29,6 +29,16 @@ main {
     border: 2px solid rgb(233, 233, 233);
 }
 
+.inputEtiqueta {
+    font-family: rubik;
+    width: 11.5rem;
+    height: 100%;
+    padding: .8rem 1rem;
+    border: 1px solid #eeeeee;
+    border-radius: .5rem;
+    font-weight: 400;
+}
+
 .inputDescription {
     font-family: rubik;
     width: 11.5rem;
