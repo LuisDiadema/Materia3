@@ -26,16 +26,18 @@ const createListItem = (task, checkbox, etiqueta) => {
     const completedTaskButton = document.createElement('button');
     completedTaskButton.textContent = 'Concluir';
     completedTaskButton.ariaLabel = 'Concluir tarefa';
+    completedTaskButton.className = "completedBtn"
 
     completedTaskButton.onclick = () => completedTask(task.id);
 
-    toDo.id = task.id
-    
-    toDo.appendChild(completedTaskButton);    
+    toDo.id = task.id 
     toDo.appendChild(checkbox);
+    toDo.appendChild(completedTaskButton); 
+
     if (etiqueta) {
         toDo.appendChild(etiqueta)
     }
+
     list.appendChild(toDo);
     
     return toDo;
