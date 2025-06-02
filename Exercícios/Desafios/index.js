@@ -122,22 +122,6 @@ const getNewTaskId = () => {
     return lastEtiqueta ? lastEtiqueta + 1 : 1;
 }
 
-//const createEtiqueta = (event) => {
-//
-//
-//    const checkbox = getCheckboxInputEtiqueta(NewEtiquetaData)
-//    createListEtiquetaItem(NewEtiquetaData, checkbox);
-//
-//    let tasks = [
-//        ...tasks, { 
-//            id: NewEtiquetaData.id,
-//            description: NewEtiquetaData.description,
-//            checked: false,
-//            etiqueta: NewEtiquetaData.etiqueta
-//        }
-//    ]
-//}
-
 const createTask = (event) => {
     event.preventDefault();
     const newTaskData = getNewTaskData(event);
