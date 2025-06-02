@@ -76,12 +76,15 @@ main {
     align-items: center;
 }
 
-.toDo {
+label {
+    display: grid;
+    grid-auto-flow: column;
+}
 
+.toDo {
     ul > li {
+        list-style-type: none;
         margin-bottom: .3rem;
-        display: grid;
-        grid-auto-flow: column;
         border: 1px solid rgb(236, 236, 236);
         border-radius: .5rem;
         padding: .8rem 1rem;
@@ -95,7 +98,6 @@ main {
     }
 
     ul > li > button {
-        grid-area: span 2;
         background-color: #2D70FD;
         color: #FFFFFF;
         width: 4rem;
@@ -126,8 +128,4 @@ main {
     font-size: .45rem;
     color: #B1BACB;
     text-align: center;
-}
-
-li {
-    justify-content: space-between;
 }
