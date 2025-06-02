@@ -64,7 +64,7 @@ main {
     }
 }
 
-#list {
+#taskList {
     width: 100%;
     height: 100%;
     padding-left: 0;
@@ -75,7 +75,6 @@ main {
     justify-content: space-between;
     align-items: center;
 }
-
 
 .toDo {
 
@@ -117,7 +116,7 @@ main {
     }
 }
 
-.etiqueta-label-container {
+.etiquetaLabelContainer {
     width: 2rem;
     height: .5rem;
     border-radius: .5rem;

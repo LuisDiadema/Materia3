@@ -1,7 +1,7 @@
 const tasks = [
     {id: 1, description: 'Passear com o cachorro', checked: false, etiqueta: 'FrontEnd'},
     {id: 2, description: 'Fazer almoço', checked: true, etiqueta: 'BackEnd'},
-    {id: 3, description: 'ir a academia', checked: false, etiqueta: 'UX'},
+    {id: 3, description: 'ir a academia', checked: false, etiqueta: 'UX'}
 ];
 
 const completedTask = (taskId) => {
@@ -9,6 +9,7 @@ const completedTask = (taskId) => {
 
     document
         .getElementById("list")
+        .getElementByID("etiqueta")
         .completedChild(document.getElementById(taskId));
 }
 
@@ -19,18 +20,25 @@ const tasksToCompleted = () => {
 }
 
 const createListEtiquetaItem = (task, etiqueta) => {
-    const list = document.getElementById('list');
+    const list = document.getElementById('etiqueta');
     const toDo = document.createElement('li');
+
+    const completedTaskButton = document.createElement('button');
+    completedTaskButton.textContent = 'Concluir';
+    completedTaskButton.ariaLabel = 'Concluir tarefa';
+
+    completedTaskButton.onclick = () => completedTask(task.id);
 
     toDo.id = task.id
     toDo.appendChild(etiqueta);
+    toDo.appendChild(completedTaskButton);
     list.appendChild(toDo);
 
     return toDo;
 }
 
 const createListItem = (task, checkbox) => {
-    const list = document.getElementById('list');
+    const list = document.getElementById('taskList');
     const toDo = document.createElement('li');
 
     const completedTaskButton = document.createElement('button');
@@ -62,7 +70,7 @@ const getCheckboxInputEtiqueta = ({ id, etiqueta, checked}) => {
     etiquetar.id = etiquetarId;
     etiquetar.checked = checked || false;
 
-    label.textContent = etiqueta;
+    label.textContent = etiqueta || "Sem Etiqueta";
     label.htmlFor = etiquetarId;
 
     wrapper.className = 'etiquetaLabelContainer';
@@ -96,14 +104,49 @@ const getCheckboxInput = ({id, description, checked}) => {
     return wrapper;
 }
 
+const getNewEtiquetaId = () => {
+    const lastId = tasks[tasks.length - 1]?.id;
+    return lastId ? lastId + 1 : 1;
+}
+
+const getNewTaskData = (event) => {
+    const description = event.target.elements.description.value;
+    const etiqueta = event.target.elements.etiqueta.value;
+    const id = getNewTaskId();
+
+    return { description, etiqueta, id }
+}
+
+const getNewTaskId = () => {
+    const lastEtiqueta = tasks[tasks.length - 1]?.etiqueta;
+    return lastEtiqueta ? lastEtiqueta + 1 : 1;
+}
+
+//const createEtiqueta = (event) => {
+//
+//
+//    const checkbox = getCheckboxInputEtiqueta(NewEtiquetaData)
+//    createListEtiquetaItem(NewEtiquetaData, checkbox);
+//
+//    let tasks = [
+//        ...tasks, { 
+//            id: NewEtiquetaData.id,
+//            description: NewEtiquetaData.description,
+//            checked: false,
+//            etiqueta: NewEtiquetaData.etiqueta
+//        }
+//    ]
+//}
+
 const createTask = (event) => {
     event.preventDefault();
     const newTaskData = getNewTaskData(event);
 
     const checkbox = getCheckboxInput(newTaskData)
-    createListItem(newTaskData, checkbox);
+    const etiqueta = getCheckboxInputEtiqueta(newTaskData)
+    createListItem(newTaskData, checkbox, etiqueta);
 
-    tasks = [
+    let tasks = [
         ...tasks, 
         { 
         id: newTaskData.id, 
@@ -114,52 +157,9 @@ const createTask = (event) => {
     ]
 }
 
-const getNewEtiquetaId = () => {
-    const lastId = tasks[tasks.length - 1]?.id;
-    return lastId ? lastId + 1 : 1;
-}
-
-const getNewEtiquetaData = (event) => {
-    const etiqueta = event.target.elements.etiqueta.value;
-    const id = getNewEtiquetaId();
-
-    return { etiqueta, id }
-}
-
-const createEtiqueta = (event) => {
-    event.preventDefault();
-    const NewEtiquetaData = getNewEtiquetaData();
-    //const { id, description } = NewEtiquetaData;
-
-    const checkbox = getCheckboxInputEtiqueta(NewEtiquetaData)
-    createListEtiquetaItem(NewEtiquetaData, etiqueta);
-
-    tasks = [
-        ...tasks, { 
-            id: NewEtiquetaData.id,
-            description: NewEtiquetaData.description,
-            checked: false,
-            etiqueta: NewEtiquetaData.etiqueta
-        }
-    ]
-}
-
-const getNewTaskId = () => {
-    const lastEtiqueta = tasks[tasks.length - 1]?.etiqueta;
-    return lastEtiqueta ? lastEtiqueta + 1 : 1;
-}
-
-const getNewTaskData = (event) => {
-    const description = event.target.elements.description.value;
-    const id = getNewTaskId();
-
-    return { description, id }
-}
-
 window.onload = function () {
     const form = document.getElementById('taskDescription');
     form.addEventListener('submit', createTask);
-    form.addEventListener('submit', createEtiqueta);
 
     tasks.forEach((task) => {
         const checkbox = getCheckboxInput(task);
