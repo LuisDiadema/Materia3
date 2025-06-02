@@ -9,7 +9,7 @@ const completedTask = (taskId) => {
 
     document
         .getElementById("list")
-        .getElementByID("etiqueta")
+        .getElementById("etiqueta")
         .completedChild(document.getElementById(taskId));
 }
 
@@ -37,7 +37,7 @@ const createListEtiquetaItem = (task, etiqueta) => {
     return toDo;
 }
 
-const createListItem = (task, checkbox) => {
+const createListItem = (task, checkbox, etiquetaLabel) => {
     const list = document.getElementById('taskList');
     const toDo = document.createElement('li');
 
@@ -49,6 +49,11 @@ const createListItem = (task, checkbox) => {
 
     toDo.id = task.id;
     toDo.appendChild(checkbox);
+
+    if(etiquetaLabel) {
+        toDo.appendChild(etiquetaLabel);
+    } 
+    
     toDo.appendChild(completedTaskButton);
     list.appendChild(toDo);
 
@@ -111,7 +116,7 @@ const getNewEtiquetaId = () => {
 
 const getNewTaskData = (event) => {
     const description = event.target.elements.description.value;
-    const etiqueta = event.target.elements.etiqueta.value;
+    const etiqueta = event.target.elements.etiqueta.value.trim();
     const id = getNewTaskId();
 
     return { description, etiqueta, id }
@@ -126,19 +131,23 @@ const createTask = (event) => {
     event.preventDefault();
     const newTaskData = getNewTaskData(event);
 
-    const checkbox = getCheckboxInput(newTaskData)
-    const etiqueta = getCheckboxInputEtiqueta(newTaskData)
-    createListItem(newTaskData, checkbox, etiqueta);
+    const checkbox = getCheckboxInput(newTaskData);
+    const etiqueta = getCheckboxInputEtiqueta(newTaskData);
 
-    let tasks = [
+    const listItem = createListItem(newTaskData, checkbox);
+    listItem.appendChild(etiqueta);
+
+    tasks.push (
         ...tasks, 
         { 
         id: newTaskData.id, 
         description: newTaskData.description, 
-        checkbox: false , 
+        checked: false,
         etiqueta: newTaskData.etiqueta
         }
-    ]
+    );
+
+    event.target.reset();
 }
 
 window.onload = function () {
@@ -147,6 +156,7 @@ window.onload = function () {
 
     tasks.forEach((task) => {
         const checkbox = getCheckboxInput(task);
-        createListItem(task, checkbox); 
+        const etiqueta = getCheckboxInputEtiqueta(task);
+        createListItem(task, checkbox, etiqueta);
     })
 }
