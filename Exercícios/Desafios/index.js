@@ -5,6 +5,7 @@ let tasks = [
 ];
 
 const removeTask = (taskId) => {
+    setTimeout(() => {
     tasks = tasks.filter(({ id }) => parseInt(id) !== parseInt(taskId));
 
     const taskElement = document.getElementById(`task-${taskId}`);
@@ -15,6 +16,8 @@ const removeTask = (taskId) => {
     } else {
         console.error(`Erro ao remover: elemento task-&{taskId} não encontrado`);
     }
+
+    }, 3000)
 }
 
 //const tasksToCompleted = () => {
