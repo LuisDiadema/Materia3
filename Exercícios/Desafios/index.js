@@ -17,7 +17,7 @@ const removeTask = (taskId) => {
         console.error(`Erro ao remover: elemento task-&{taskId} não encontrado`);
     }
 
-    }, 3000)
+    }, 1000)
 }
 
 //const tasksToCompleted = () => {
