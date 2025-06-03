@@ -122,9 +122,8 @@ main {
     margin-bottom: .5rem;
 }
 
-.etiquetaLabelContainer {
-    display: inline-block;
-    width: auto;
+.etiquetaLabel {
+    width: 4rem;
     height: .6rem;
     border-radius: .5rem;
     border: 1px solid #B1BACB;
@@ -133,4 +132,19 @@ main {
     font-size: .45rem;
     color: #B1BACB;
     text-align: center;
+}
+
+.Date {
+    width: 100%;
+    height: 100%;
+    margin-left: .25rem;
+    font-size: .5rem;
+    font-weight: 500;
+    color: #B1BACB;
+}
+
+footer {
+    width: 100%;
+    height: 1px;
+    background-color: #eeeeee;
 }

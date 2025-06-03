@@ -1,23 +1,22 @@
 const tasks = [
-    {id: 1, description: 'Passear com o cachorro', etiqueta: 'FrontEnd', checked: false},
-    {id: 2, description: 'Fazer almoço', etiqueta: 'BackEnd', checked: true},
-    {id: 3, description: 'ir a academia', etiqueta: 'UX', checked: false}
+    {id: 1, description: 'Passear com o cachorro', etiqueta: 'FrontEnd', checked: false, dataCriacao: '03/03/2025'},
+    {id: 2, description: 'Fazer almoço', etiqueta: 'BackEnd', checked: true, dataCriacao: '03/03/2025'},
+    {id: 3, description: 'ir a academia', etiqueta: 'UX', checked: false, dataCriacao: '03/03/2025'}
 ];
 
-const completedTask = (taskId) => {
+const removeTask = (taskId) => {
     tasks = tasks.filter(({ id }) => parseInt(id) !== parseInt(taskId));
 
     document
-        .getElementById("list")
-        .getElementById("etiqueta")
-        .completedChild(document.getElementById(taskId));
+        .getElementById('taskList')
+        .removeChild(document.getElementById(taskId));
 }
 
-const tasksToCompleted = () => {
-    const tasksToCompleted = tasks
-        .filter(({ checked }) => checked)
-    console.log(tasksToCompleted)
-}
+//const tasksToCompleted = () => {
+//    const tasksToCompleted = tasks
+//        .filter(({ checked }) => checked)
+//        console.log(tasksToCompleted)
+//}
 
 const createListItem = (task, checkbox, etiqueta) => {
     const list = document.getElementById('taskList');
@@ -32,14 +31,13 @@ const createListItem = (task, checkbox, etiqueta) => {
 
     toDo.id = task.id 
     toDo.appendChild(checkbox);
+    
     toDo.appendChild(completedTaskButton); 
-
     if (etiqueta) {
         toDo.appendChild(etiqueta)
     }
-
     list.appendChild(toDo);
-    
+
     return toDo;
 }
 
@@ -48,28 +46,37 @@ const onCheckboxClick = (event) => {
     console.log(firstElement, secondElement)
 }
 
-const getCheckboxInputEtiqueta = ({ id, etiqueta, checked }) => {
+const getCheckboxInputEtiqueta = ({ id, etiqueta, checked, dataCriacao }) => {
     const etiquetar = document.createElement('input');
     const label = document.createElement('label');
+    const dateSpan = document.createElement('span')
     const wrapper = document.createElement('div');
     const etiquetarId = `${id}-checkbox`;
 
+    // Configuração do checkbox
     etiquetar.type = 'checkbox';
     etiquetar.id = etiquetarId;
     etiquetar.checked = checked || false;
 
-    label.textContent = etiqueta || "Sem Etiqueta";
+    // Configuração da etiqueta
+    label.textContent = `${etiqueta || "Sem etiqueta"}` 
     label.htmlFor = etiquetarId;
+    label.className = 'etiquetaLabel';
 
+    // Configuarção da Data
+    dateSpan.textContent = dataCriacao ? ` Criada em: ${dataCriacao}` : '';
+    dateSpan.className = 'Date';
+
+    //Envolve os elementos
     wrapper.className = 'etiquetaLabelContainer';
-
     wrapper.appendChild(etiquetar);
     wrapper.appendChild(label);
+    wrapper.appendChild(dateSpan);
 
     return wrapper;
 }
 
-const getCheckboxInput = ({id, description, checked}) => {
+const getCheckboxInput = ({id, description, checked,}) => {
     const checkbox = document.createElement('input');
     const label = document.createElement('label');
     const wrapper = document.createElement('div');
@@ -83,7 +90,7 @@ const getCheckboxInput = ({id, description, checked}) => {
 
     label.textContent = description;
     label.htmlFor = checkboxId;
-
+    
     wrapper.className = 'checkbox-label-container';
 
     wrapper.appendChild(checkbox);
@@ -97,7 +104,9 @@ const getNewTaskData = (event) => {
     const etiqueta = event.target.elements.etiqueta.value;
     const id = getNewTaskId();
 
-    return { description, etiqueta, id }
+    const dataCriacao = new Date().toLocaleDateString('pt-BR');
+
+    return { description, etiqueta, id, dataCriacao }
 }
 
 const getNewTaskId = () => {
@@ -121,7 +130,8 @@ const createTask = (event) => {
         id: newTaskData.id, 
         description: newTaskData.description, 
         etiqueta: newTaskData.etiqueta,
-        checked: false
+        checked: false,
+        dataCriacao: newTaskData.dataCriacao
         }
     );
     event.target.reset();
