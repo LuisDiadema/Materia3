@@ -27,7 +27,7 @@ const createListItem = (task, checkbox, etiqueta) => {
     completedTaskButton.ariaLabel = 'Concluir tarefa';
     completedTaskButton.className = "completedBtn"
 
-    completedTaskButton.onclick = () => completedTask(task.id);
+    
 
     toDo.id = task.id 
     toDo.appendChild(checkbox);
