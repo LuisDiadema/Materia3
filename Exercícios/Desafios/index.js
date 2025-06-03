@@ -1,4 +1,4 @@
-const tasks = [
+let tasks = [
     {id: 1, description: 'Passear com o cachorro', etiqueta: 'FrontEnd', checked: false, dataCriacao: '03/03/2025'},
     {id: 2, description: 'Fazer almoço', etiqueta: 'BackEnd', checked: true, dataCriacao: '03/03/2025'},
     {id: 3, description: 'ir a academia', etiqueta: 'UX', checked: false, dataCriacao: '03/03/2025'}
@@ -7,9 +7,14 @@ const tasks = [
 const removeTask = (taskId) => {
     tasks = tasks.filter(({ id }) => parseInt(id) !== parseInt(taskId));
 
-    document
-        .getElementById('taskList')
-        .removeChild(document.getElementById(taskId));
+    const taskElement = document.getElementById(`task-${taskId}`);
+    const list = document.getElementById('taskList');
+
+    if (taskElement && list) {
+        list.removeChild(taskElement);
+    } else {
+        console.error(`Erro ao remover: elemento task-&{taskId} não encontrado`);
+    }
 }
 
 //const tasksToCompleted = () => {
@@ -27,9 +32,9 @@ const createListItem = (task, checkbox, etiqueta) => {
     completedTaskButton.ariaLabel = 'Concluir tarefa';
     completedTaskButton.className = "completedBtn"
 
-    
+    completedTaskButton.onclick = () => removeTask(task.id);
 
-    toDo.id = task.id 
+    toDo.id = `task-${task.id}`;
     toDo.appendChild(checkbox);
     
     toDo.appendChild(completedTaskButton); 
