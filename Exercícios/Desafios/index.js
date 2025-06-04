@@ -4,13 +4,19 @@ let tasks = [
     {id: 3, description: 'Ir a academia', etiqueta: 'UX', checked: false, dataCriacao: '03/03/2025'}
 ];
 
+const getTasksFromLocalStorage = () => {
+    const localTasks = JSON.parse(window.localStorage.getItem('tasks'));
+    return localTasks ? localTasks : [];
+}
+
 const setTaskLocalStorage = (tasks) => {
     window.localStorage.setItem('tasks', JSON.stringify(tasks));
 }
 
 const removeTask = (taskId) => {
-    tasks = tasks.filter(({ id }) => parseInt(id) !== parseInt(taskId));
-    setTaskLocalStorage();
+    const tasks = getTasksFromLocalStorage();
+    const upDatedTasks = tasks.filter(({ id }) => parseInt(id) !== parseInt(taskId));
+    setTaskLocalStorage(upDatedTasks);
 
     const taskElement = document.getElementById(`task-${taskId}`);
     const list = document.getElementById('taskList');
@@ -18,7 +24,7 @@ const removeTask = (taskId) => {
     if (taskElement && list) {
         list.removeChild(taskElement);
     } else {
-        console.error(`Erro ao remover: elemento task-&{taskId} não encontrado`);
+        console.error(`Erro ao remover: elemento task-${taskId} não encontrado`);
     }
 }
 
@@ -46,8 +52,16 @@ const createListItem = (task, checkbox, etiqueta) => {
 }
 
 const onCheckboxClick = (event) => {
-    const [firstElement, secondElement] = event.target.id.split('-')
-    console.log(firstElement, secondElement)
+    const [id] = event.target.id.split('-')
+    const tasks = getTasksFromLocalStorage();
+
+    const upDatedTasks = tasks.map((tasks) => {
+        return parseInt(tasks.id) === parseInt(id)
+            ? { ...tasks, checked: event.target.checked }
+            : tasks
+    })
+
+    setTaskLocalStorage(upDatedTasks)
 }
 
 const getCheckboxInputEtiqueta = ({ id, etiqueta, checked, dataCriacao }) => {
@@ -114,6 +128,7 @@ const getNewTaskData = (event) => {
 }
 
 const getNewTaskId = () => {
+    const tasks = getTasksFromLocalStorage();
     const lastEtiqueta = tasks[tasks.length - 1]?.id;
     return lastEtiqueta ? lastEtiqueta + 1 : 1;
 }
@@ -125,21 +140,19 @@ const createTask = (event) => {
     const checkbox = getCheckboxInput(newTaskData);
     const etiqueta = getCheckboxInputEtiqueta(newTaskData);
 
-    const listItem = createListItem(newTaskData, checkbox);
-    listItem.appendChild(etiqueta);
+    const listItem = createListItem(newTaskData, checkbox, etiqueta);
 
-    tasks.push (
-        ...tasks, 
-        { 
+    const tasks = getTasksFromLocalStorage();
+
+    tasks.push ({ 
         id: newTaskData.id, 
         description: newTaskData.description, 
         etiqueta: newTaskData.etiqueta,
         checked: false,
-        dataCriacao: newTaskData.dataCriacao
-        }
-    );
+        dataCriacao: newTaskData.dataCriacao });
+
+    setTaskLocalStorage(tasks); 
     event.target.reset();
-    
 }
 
 window.onload = function () {
