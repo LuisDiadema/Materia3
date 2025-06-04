@@ -4,19 +4,13 @@ let tasks = [
     {id: 3, description: 'Ir a academia', etiqueta: 'UX', checked: false, dataCriacao: '03/03/2025'}
 ];
 
-const getTasksFromLocalStorage = () => {
-    const localTasks = JSON.parse(window.localStorage.getItem('tasks'));
-    return localTasks ? localTasks : [];
-}
-
 const setTaskLocalStorage = (tasks) => {
     window.localStorage.setItem('tasks', JSON.stringify(tasks));
 }
 
 const removeTask = (taskId) => {
-    setTimeout(() => {
     tasks = tasks.filter(({ id }) => parseInt(id) !== parseInt(taskId));
-    setTaskLocalStorage(tasks);
+    setTaskLocalStorage();
 
     const taskElement = document.getElementById(`task-${taskId}`);
     const list = document.getElementById('taskList');
@@ -26,15 +20,7 @@ const removeTask = (taskId) => {
     } else {
         console.error(`Erro ao remover: elemento task-&{taskId} não encontrado`);
     }
-
-    }, 1000)
 }
-
-//const tasksToCompleted = () => {
-//    const tasksToCompleted = tasks
-//        .filter(({ checked }) => checked)
-//        console.log(tasksToCompleted)
-//}
 
 const createListItem = (task, checkbox, etiqueta) => {
     const list = document.getElementById('taskList');
