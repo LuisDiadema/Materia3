@@ -1,12 +1,22 @@
 let tasks = [
     {id: 1, description: 'Passear com o cachorro', etiqueta: 'FrontEnd', checked: false, dataCriacao: '03/03/2025'},
     {id: 2, description: 'Fazer almoço', etiqueta: 'BackEnd', checked: true, dataCriacao: '03/03/2025'},
-    {id: 3, description: 'ir a academia', etiqueta: 'UX', checked: false, dataCriacao: '03/03/2025'}
+    {id: 3, description: 'Ir a academia', etiqueta: 'UX', checked: false, dataCriacao: '03/03/2025'}
 ];
+
+const getTasksFromLocalStorage = () => {
+    const localTasks = JSON.parse(window.localStorage.getItem('tasks'));
+    return localTasks ? localTasks : [];
+}
+
+const setTaskLocalStorage = (tasks) => {
+    window.localStorage.setItem('tasks', JSON.stringify(tasks));
+}
 
 const removeTask = (taskId) => {
     setTimeout(() => {
     tasks = tasks.filter(({ id }) => parseInt(id) !== parseInt(taskId));
+    setTaskLocalStorage(tasks);
 
     const taskElement = document.getElementById(`task-${taskId}`);
     const list = document.getElementById('taskList');
@@ -149,6 +159,8 @@ const createTask = (event) => {
 window.onload = function () {
     const form = document.getElementById('taskDescription');
     form.addEventListener('submit', createTask);
+
+    const tasks = getTasksFromLocalStorage();
 
     tasks.forEach((task) => {
         const checkbox = getCheckboxInput(task);
