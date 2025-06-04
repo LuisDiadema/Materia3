@@ -139,8 +139,7 @@ const createTask = (event) => {
 
     const checkbox = getCheckboxInput(newTaskData);
     const etiqueta = getCheckboxInputEtiqueta(newTaskData);
-
-    const listItem = createListItem(newTaskData, checkbox, etiqueta);
+    createListItem(newTaskData, checkbox, etiqueta);
 
     const tasks = getTasksFromLocalStorage();
 
