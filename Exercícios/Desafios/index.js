@@ -1,17 +1,15 @@
-const renderTasksProgressData = (tasks) => {
-    let tasksProgress;
-    const tasksProgressDOM = document.getElementById('tasks-progress');
+let sessionCompletedCount = 0;
 
-    if (tasksProgressDOM) tasksProgress = tasksProgressDOM;
-    else {
-        const newTasksProgressDOM = document.createElement('div');
-        newTasksProgressDOM.id = 'tasks-progress';
-        document.getElementById('taskProgress').appendChild(newTasksProgressDOM);
-        tasksProgress = newTasksProgressDOM;
+const renderTasksProgressData = () => {
+    let tasksProgress = document.getElementById('tasks-progress');
+
+    if (!tasksProgress) {
+        tasksProgress = document.createElement('div');
+        tasksProgress.id = 'tasks-progress';
+        document.getElementById('taskProgress').appendChild(tasksProgress);
     }
 
-    const completedTask = tasks.filter(({ checked }) => checked).length;
-    tasksProgress.textContent = `${completedTask} tarefas concluída`;
+    tasksProgress.textContent = `${sessionCompletedCount} tarefas${sessionCompletedCount !== 1 ? 's' : ''} concluídas${sessionCompletedCount !== 1 ? 's' : ''}`;
 }
 
 const getTasksFromLocalStorage = () => {
@@ -56,6 +54,7 @@ const createListItem = (task, checkbox, etiqueta) => {
             : t
         );
         setTaskLocalStorage(upDatedTasks);
+        sessionCompletedCount++;
         renderTasksProgressData(upDatedTasks);
 
         const taskElement = document.getElementById(`task-${task.id}`);
@@ -184,12 +183,14 @@ window.onload = function () {
 
     const tasks = getTasksFromLocalStorage();
 
-    tasks.forEach((task) => {
-        const checkbox = getCheckboxInput(task);
-        const etiqueta = getCheckboxInputEtiqueta(task);
-        createListItem(task, checkbox, etiqueta);
-    })
+    tasks
+        .filter(task => !task.checked)
+        .forEach((task) => {
+            const checkbox = getCheckboxInput(task);
+            const etiqueta = getCheckboxInputEtiqueta(task);
+            createListItem(task, checkbox, etiqueta);
+        });
 
-    renderTasksProgressData(tasks);
-
+    sessionCompletedCount = 0;
+    renderTasksProgressData();
 }
