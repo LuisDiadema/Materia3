@@ -1,13 +1,17 @@
 const renderTasksProgressData = (tasks) => {
     let tasksProgress;
-    const tasksProgressDOM = document.getElementById('task-progress');
+    const tasksProgressDOM = document.getElementById('tasks-progress');
 
     if (tasksProgressDOM) tasksProgress = tasksProgressDOM;
     else {
         const newTasksProgressDOM = document.createElement('div');
         newTasksProgressDOM.id = 'tasks-progress';
-        document.getElementById('tasks-progress').appendChild(newTasksProgressDOM);
+        document.getElementById('taskProgress').appendChild(newTasksProgressDOM);
+        tasksProgress = newTasksProgressDOM;
     }
+
+    const completedTask = tasks.filter(({ checked }) => checked).length;
+    tasksProgress.textContent = `${completedTask} tarefas concluída`;
 }
 
 const getTasksFromLocalStorage = () => {
@@ -23,6 +27,7 @@ const removeTask = (taskId) => {
     const tasks = getTasksFromLocalStorage();
     const upDatedTasks = tasks.filter(({ id }) => parseInt(id) !== parseInt(taskId));
     setTaskLocalStorage(upDatedTasks);
+    renderTasksProgressData(upDatedTasks);
 
     const taskElement = document.getElementById(`task-${taskId}`);
     const list = document.getElementById('taskList');
@@ -42,8 +47,20 @@ const createListItem = (task, checkbox, etiqueta) => {
     completedTaskButton.textContent = 'Concluir';
     completedTaskButton.ariaLabel = 'Concluir tarefa';
     completedTaskButton.className = "completedBtn"
+    
+    completedTaskButton.onclick = () => {
+        const tasks = getTasksFromLocalStorage();
+        const upDatedTasks = tasks.map (t => 
+            parseInt(t.id) === parseInt(task.id) 
+            ? { ...t, checked: true }
+            : t
+        );
+        setTaskLocalStorage(upDatedTasks);
+        renderTasksProgressData(upDatedTasks);
 
-    completedTaskButton.onclick = () => removeTask(task.id);
+        const taskElement = document.getElementById(`task-${task.id}`);
+        if (taskElement) taskElement.remove();
+    };
 
     toDo.id = `task-${task.id}`;
     toDo.appendChild(checkbox);
@@ -68,6 +85,7 @@ const onCheckboxClick = (event) => {
     })
 
     setTaskLocalStorage(upDatedTasks)
+    renderTasksProgressData(upDatedTasks);
 }
 
 const getCheckboxInputEtiqueta = ({ id, etiqueta, checked, dataCriacao }) => {
@@ -156,7 +174,7 @@ const createTask = (event) => {
         checked: false,
         dataCriacao: newTaskData.dataCriacao });
 
-    setTaskLocalStorage(tasks); 
+    setTaskLocalStorage(tasks);
     event.target.reset();
 }
 

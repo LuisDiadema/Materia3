@@ -149,15 +149,15 @@ main {
     background-color: #eeeeee;
 }
 
-#tasksProgress {
+#tasks-progress {
+    padding-top: .7rem;
     width: 100%;
-    height: 1px;
+    height: 100%;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    background-color: #eeeeee;
     font-family: Inter;
     color: #B1BACB;
-    font-size: 1rem;
+    font-size: .6rem;
     font-weight: 400;
 }
