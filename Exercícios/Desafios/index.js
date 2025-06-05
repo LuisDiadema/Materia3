@@ -9,7 +9,7 @@ const renderTasksProgressData = () => {
         document.getElementById('taskProgress').appendChild(tasksProgress);
     }
 
-    tasksProgress.textContent = `${sessionCompletedCount} tarefas${sessionCompletedCount !== 1 ? 's' : ''} concluídas${sessionCompletedCount !== 1 ? 's' : ''}`;
+    tasksProgress.textContent = `${sessionCompletedCount} tarefa${sessionCompletedCount !== 1 ? 's' : ''} concluída${sessionCompletedCount !== 1 ? 's' : ''}`;
 }
 
 const getTasksFromLocalStorage = () => {
@@ -58,7 +58,11 @@ const createListItem = (task, checkbox, etiqueta) => {
         renderTasksProgressData(upDatedTasks);
 
         const taskElement = document.getElementById(`task-${task.id}`);
-        if (taskElement) taskElement.remove();
+        if (taskElement) {
+            taskElement.classList.add('concluida');
+
+            setTimeout (() => taskElement.remove(), 3000);
+        }
     };
 
     toDo.id = `task-${task.id}`;

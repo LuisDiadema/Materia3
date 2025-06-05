@@ -161,3 +161,10 @@ main {
     font-size: .6rem;
     font-weight: 400;
 }
+
+.concluida > .checkbox-label-container {
+    text-decoration: line-through;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+    color: #8F98A8;
+}
