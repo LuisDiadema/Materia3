@@ -143,8 +143,21 @@ main {
     color: #B1BACB;
 }
 
-footer {
+#footerBar {
     width: 100%;
     height: 1px;
     background-color: #eeeeee;
+}
+
+#tasksProgress {
+    width: 100%;
+    height: 1px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    background-color: #eeeeee;
+    font-family: Inter;
+    color: #B1BACB;
+    font-size: 1rem;
+    font-weight: 400;
 }

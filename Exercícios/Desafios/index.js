@@ -1,8 +1,14 @@
-let tasks = [
-    {id: 1, description: 'Passear com o cachorro', etiqueta: 'FrontEnd', checked: false, dataCriacao: '03/03/2025'},
-    {id: 2, description: 'Fazer almoço', etiqueta: 'BackEnd', checked: true, dataCriacao: '03/03/2025'},
-    {id: 3, description: 'Ir a academia', etiqueta: 'UX', checked: false, dataCriacao: '03/03/2025'}
-];
+const renderTasksProgressData = (tasks) => {
+    let tasksProgress;
+    const tasksProgressDOM = document.getElementById('task-progress');
+
+    if (tasksProgressDOM) tasksProgress = tasksProgressDOM;
+    else {
+        const newTasksProgressDOM = document.createElement('div');
+        newTasksProgressDOM.id = 'tasks-progress';
+        document.getElementById('tasks-progress').appendChild(newTasksProgressDOM);
+    }
+}
 
 const getTasksFromLocalStorage = () => {
     const localTasks = JSON.parse(window.localStorage.getItem('tasks'));
@@ -165,4 +171,7 @@ window.onload = function () {
         const etiqueta = getCheckboxInputEtiqueta(task);
         createListItem(task, checkbox, etiqueta);
     })
+
+    renderTasksProgressData(tasks);
+
 }
