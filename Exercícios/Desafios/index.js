@@ -59,9 +59,19 @@ const createListItem = (task, checkbox, etiqueta) => {
 
         const taskElement = document.getElementById(`task-${task.id}`);
         if (taskElement) {
+            //Atualiza o botão ao clicar
+            completedTaskButton.innerHTML = '';
+            completedTaskButton.classList.add('tickButton');
+
+            const tickImg = document.createElement('img');
+            tickImg.src = './assets/tick.svg';
+            tickImg.className = 'tickIcon';
+
+            completedTaskButton.appendChild(tickImg);
+
             taskElement.classList.add('concluida');
 
-            setTimeout (() => taskElement.remove(), 3000);
+            setTimeout (() => taskElement.remove(), 1000);
         }
     };
 

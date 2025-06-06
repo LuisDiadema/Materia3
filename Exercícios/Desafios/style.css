@@ -112,6 +112,13 @@ main {
         &:hover {
             background: #4e86ff;
         }
+        &:active {
+            width: 50%;
+            background: #00D8A7;
+            border-radius: 100%;
+            background-image: url(./assets/tick.svg);
+            background-repeat: no-repeat;
+        }
     }
     input{
         display: none;
@@ -167,4 +174,31 @@ main {
     opacity: 0.6;
     transition: all 0.3s ease;
     color: #8F98A8;
+}
+
+.completedBtn {
+    padding: 8px 12px;
+    border: none;
+    background-color: #2ECC71;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tickBtn {
+    background-color: #2ECC71;
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tickIcon {
+    width: 16px;
+    height: 16px;
 }
