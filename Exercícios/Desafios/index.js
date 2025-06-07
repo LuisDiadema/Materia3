@@ -61,11 +61,6 @@ const createListItem = (task, checkbox, etiqueta) => {
         if (taskElement) {
             taskElement.classList.add('concluida');
 
-            //Atualiza o botão ao clicar
-            completedTaskButton.innerHTML = '';
-            completedTaskButton.classList.remove('completedBTN');
-            completedTaskButton.classList.add('tickButton');
-
             const tickButton = document.createElement('button');
             tickButton.className = 'tickButton';
             const img = document.createElement('img');
@@ -74,7 +69,7 @@ const createListItem = (task, checkbox, etiqueta) => {
             tickButton.appendChild(img);
 
             taskElement.replaceChild(tickButton, completedTaskButton);
-            
+
             setTimeout (() => taskElement.remove(), 3000);
         }
     };
