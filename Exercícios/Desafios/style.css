@@ -95,7 +95,7 @@ main {
         margin-bottom: 0;
     }
 
-    ul > li > button {
+    ul > li > .completedBtn {
         grid-area: span 2;
         align-self: center;
         background-color: #2D70FD;
@@ -180,11 +180,12 @@ main {
 }
 
 .tickButton {
-    background-color: #2ecc71;
+    grid-area: span 2;
+    background-color: #00D8A7;
     border: none;
     border-radius: 50%;
-    width: 1rem;
-    height: 1rem;
+    width: 1.7rem;
+    height: 1.7rem;
     padding: 4px;
     display: flex;
     align-items: center;
@@ -194,7 +195,8 @@ main {
 }
 
 .tickButton:focus {
-    background-color: #2ecc71;
+    grid-area: span 2;
+    background-color: #00D8A7;
     box-shadow: none;
     border-radius: 50%;
     width: 1.5rem;
@@ -202,6 +204,6 @@ main {
 }
 
 .tickIcon {
-    width: 16px;
-    height: 16px;
+    width: 1rem;
+    height: 1rem;
 }

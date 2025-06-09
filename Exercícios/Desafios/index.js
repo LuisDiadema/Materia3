@@ -70,7 +70,7 @@ const createListItem = (task, checkbox, etiqueta) => {
 
             taskElement.replaceChild(tickButton, completedTaskButton);
 
-            setTimeout (() => taskElement.remove(), 3000);
+            setTimeout (() => taskElement.remove(), 30000);
         }
     };
 
