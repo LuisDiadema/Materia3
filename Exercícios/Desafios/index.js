@@ -76,7 +76,7 @@ const createListItem = (task, checkbox, etiqueta) => {
 
     toDo.id = `task-${task.id}`;
     toDo.appendChild(checkbox);
-    
+
     toDo.appendChild(completedTaskButton); 
     if (etiqueta) {
         toDo.appendChild(etiqueta)

@@ -220,19 +220,48 @@ main {
     #taskDescription {
         display: flex;
         flex-direction: column;
-        width:100%;
     }
 
     .inputDescription {
         width: 100%;
-        margin-bottom:  .5rem;
+        box-sizing: border-box;
+        margin: 0 0 .5rem 0;
     }
     .inputEtiqueta {
-        width: 14.5rem;
+        width: 100%;
+        box-sizing: border-box;
         margin-bottom: .5rem;
     }
 
     .addTaskBtn {
         width: 100%;
+    }
+
+    .toDo {
+        
+        ul > li {
+            display: flex;
+            flex-direction: column
+        }
+
+        .checkbox-label-container{
+            font-size: .8rem;
+            order: 1;
+        }
+
+        .etiquetaLabelContainer {
+            margin-top: .5rem;
+            order: 2;
+        }
+
+        .completedBtn {
+            margin-top: .5rem;
+            order: 3;
+        }
+        .tickButton {
+            align-self: center;
+            margin-top: .5rem;
+            order: 3;
+        }
     }
 }
