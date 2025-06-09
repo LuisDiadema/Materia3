@@ -1,0 +1,267 @@
+html{
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    font-size: 1.3rem;
+}
+
+h1 {
+    font-family: rubik;
+    color: #11175E;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    background-color: #f5f9ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main {
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 650px;
+    border-radius: .5rem;
+    padding: .8rem 1rem;
+    border: 2px solid rgb(233, 233, 233);
+}
+
+.inputEtiqueta {
+    font-family: rubik;
+    width: 11.5rem;
+    height: 100%;
+    padding: .8rem 1rem;
+    border: 1px solid #eeeeee;
+    border-radius: .5rem;
+    font-weight: 400;
+}
+
+.inputDescription {
+    font-family: rubik;
+    width: 11.5rem;
+    height: 100%;
+    padding: .8rem 1rem;
+    border: 1px solid #eeeeee;
+    border-radius: .5rem;
+    font-weight: 400;
+}
+
+.addTaskBtn {
+    font-size: 1.4rem;
+    color: #ffffff;
+    background-color: #2D70FD;
+    width: 2.4rem;
+    height: 2.5rem;
+    border: none;
+    border-radius: .2rem;
+    cursor: pointer;
+
+    &:hover {
+        opacity: .8;
+    }
+}
+
+#taskList {
+    width: 100%;
+    height: 100%;
+    padding-left: 0;
+}
+    
+#taskDescription {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.toDo {
+    ul > li {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        list-style-type: none;
+        word-break: break-word;
+        margin-bottom: .3rem;
+        border: 1px solid rgb(236, 236, 236);
+        border-radius: .5rem;
+        padding: .8rem 1rem;
+        font-family: Inter;
+        font-size: .7rem;
+        font-weight: 500;
+    }
+
+    & > ul > li:last-child {
+        margin-bottom: 0;
+    }
+
+    ul > li > .completedBtn {
+        grid-area: span 2;
+        align-self: center;
+        background-color: #2D70FD;
+        color: #FFFFFF;
+        width: 4.5rem;
+        height: 1.8rem;
+        font-family: Inter;
+        font-weight: 400;
+        font-size: .6rem;
+        border: none;
+        border-radius: .2rem;
+        cursor: pointer;
+        
+        &:hover {
+            background: #4e86ff;
+        }
+    }
+    input{
+        display: none;
+    }
+}
+
+.checkbox-label-container {
+    margin-bottom: .5rem;
+}
+
+.etiquetaLabel {
+    width: 4rem;
+    height: .6rem;
+    border-radius: .5rem;
+    border: 1px solid #B1BACB;
+    padding: .12rem .25rem;
+    font-weight: 500;
+    font-size: .45rem;
+    color: #B1BACB;
+    text-align: center;
+}
+
+.Date {
+    width: 100%;
+    height: 100%;
+    margin-left: .25rem;
+    font-size: .5rem;
+    font-weight: 500;
+    color: #B1BACB;
+}
+
+#footerBar {
+    width: 100%;
+    height: 1px;
+    background-color: #eeeeee;
+}
+
+#tasks-progress {
+    padding-top: .7rem;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    font-family: Inter;
+    color: #B1BACB;
+    font-size: .6rem;
+    font-weight: 400;
+}
+
+.concluida > .checkbox-label-container {
+    text-decoration: line-through;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+    color: #8F98A8;
+}
+
+.completedBtn {
+    padding: 8px 12px;
+    border: none;
+    background-color: #2ECC71;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tickButton {
+    grid-area: span 2;
+    background-color: #00D8A7;
+    border: none;
+    border-radius: 50%;
+    width: 1.7rem;
+    height: 1.7rem;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: default;
+    outline: none;
+}
+
+.tickButton:focus {
+    grid-area: span 2;
+    background-color: #00D8A7;
+    box-shadow: none;
+    border-radius: 50%;
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.tickIcon {
+    width: 1rem;
+    height: 1rem;
+}
+
+
+@media only screen and (max-width: 767px) {
+    main {
+        width: 100%;
+        max-width: 343px;
+        border-radius: .5rem;
+        padding: .8rem .5rem;
+    }
+
+    #taskDescription {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .inputDescription {
+        width: 100%;
+        box-sizing: border-box;
+        margin: 0 0 .5rem 0;
+    }
+    .inputEtiqueta {
+        width: 100%;
+        box-sizing: border-box;
+        margin-bottom: .5rem;
+    }
+
+    .addTaskBtn {
+        width: 100%;
+    }
+
+    .toDo {
+        
+        ul > li {
+            display: flex;
+            flex-direction: column
+        }
+
+        .checkbox-label-container{
+            font-size: .8rem;
+            order: 1;
+        }
+
+        .etiquetaLabelContainer {
+            margin-top: .5rem;
+            order: 2;
+        }
+
+        .completedBtn {
+            margin-top: .5rem;
+            order: 3;
+        }
+        .tickButton {
+            align-self: center;
+            margin-top: .5rem;
+            order: 3;
+        }
+    }
+}
