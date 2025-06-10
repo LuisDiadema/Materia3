@@ -1,0 +1,77 @@
+#header{
+    margin: 8% 0% 8% 0%;
+    background-color: rgb(226, 200, 165);
+}
+
+#nameAndTitle {
+    font-family: "Hubballi", cursive;
+    background-color: white;
+    margin: 0% 25% 0% 25%;
+    text-align: center;
+}
+
+#nameAndTitle h1, h2 {
+    margin: 0;
+}
+
+h1, h2, h3 {
+    text-transform: uppercase;
+}
+
+#contact {
+    list-style-type: none;
+    
+}
+
+#contact i {
+    width: 30px;
+    color: rgb(226, 200, 165);
+}
+
+#container {
+    display: grid;
+    grid-template-columns: 30% auto;
+    grid-column-gap: 20px;
+}
+
+#sideBar, #content {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+
+}
+
+.card h3 {
+    font-family: "Hubballi", cursive;
+}
+
+.card {
+    font-family: Montserrat;
+    border: 1px solid #c4c4c4;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+@media (max-width: 450px) {
+
+
+    #header {
+        margin: 5% 0% 5% 0%;
+    }
+
+    #nameAndTitle {
+        margin: 0% 20% 0% 20%;
+    }
+
+    h1, h2{
+        font-size: 110%;
+    }
+
+    #container, #content{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        row-gap: 20px;
+    }
+
+}
